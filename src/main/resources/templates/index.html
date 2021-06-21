@@ -27,7 +27,7 @@
 						<a class="nav-link active" aria-current="page" th:href="@{/home}">[[#{plantilla.inicio}]]</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"  th:href="@{/agregar}">[[#{persona.crear}]]</a>
+						<a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Pricing</a>
@@ -48,8 +48,8 @@
 					<th th:text="#{persona.apellido}" scope="col">Apellido</th>
 					<th th:text="#{persona.email}" scope="col">Email</th>
 					<th th:text="#{persona.telefono}" scope="col">Teléfono</th>
-					<th th:text="#{accion.editar}" scope="col">Editar</th>
-					<th th:text="#{accion.eliminar}" scope="col">Eliminar</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{accion.editar}" scope="col">Editar</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{accion.eliminar}" scope="col">Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -59,8 +59,8 @@
 					<td th:text="${persona.apellido}">Puerta</td>
 					<td th:text="${persona.email}">dpuer@gmail.com</td>
 					<td th:text="${persona.telefono}">2523199</td>
-					<td><a th:href="@{/editar/} + ${persona.idPersona}">Editar</a></td>
-					<td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}">Eliminar</a></td>
+					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${persona.idPersona}">Editar</a></td>
+					<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idPersona=${persona.idPersona})}">Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -21,6 +21,8 @@
 			[[#{plantilla.pie-pagina}]]
 			<a th:href="@{/home}">[[#{plantilla.inicio}]]</a>
 			<form method="POST" th:action="@{/logout}">
+			<b>User:</b> <span sec:authentication="name">Usuario que hizo login</span>|
+			<b>Roles</b> <span sec:authentication="principal.authorities">Roles</span>
 			<a href="#" onclick="this.parentNode.submit();">Logout</a>
 			</form>
 		</div>
